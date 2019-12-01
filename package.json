@@ -1,0 +1,19 @@
+{
+  "name": "apidog-longpoll",
+  "version": "0.0.1",
+  "description": "APIdog LongPoll service and typings",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "npx tsc && node build/index.js",
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jest": "^24.0.23",
+    "@types/node": "^12.12.14",
+    "jest": "^24.9.0",
+    "ts-jest": "^24.2.0",
+    "typescript": "^3.7.2"
+  }
+}
