@@ -1,5 +1,5 @@
 {
-  "name": "apidog-longpoll",
+  "name": "@apidog/longpoll",
   "version": "0.0.1",
   "description": "APIdog LongPoll service and typings",
   "main": "src/index.ts",
@@ -8,7 +8,16 @@
     "test": "jest"
   },
   "author": "",
-  "license": "ISC",
+  "license": "GPLv3",
+  "bugs": {
+    "url" : "https://github.com/APIdogRU/apidog-longpoll/issues",
+    "email" : "vladislav805@yandex.com"
+  },
+  "repository": {
+    "type" : "git",
+    "url" : "github:APIdogRU/apidog-longpoll"
+  },
+  "dependencies": {},
   "devDependencies": {
     "@types/jest": "^24.0.23",
     "@types/node": "^12.12.14",
