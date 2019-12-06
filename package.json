@@ -5,24 +5,27 @@
   "main": "src/index.ts",
   "scripts": {
     "start": "npx tsc && node build/index.js",
-    "test": "jest"
+    "test": "npx jest"
   },
   "author": "",
   "license": "GPLv3",
   "bugs": {
-    "url" : "https://github.com/APIdogRU/apidog-longpoll/issues",
-    "email" : "vladislav805@yandex.com"
+    "url": "https://github.com/APIdogRU/longpoll/issues",
+    "email": "vladislav805@yandex.com"
   },
   "repository": {
-    "type" : "git",
-    "url" : "github:APIdogRU/apidog-longpoll"
+    "type": "git",
+    "url": "github:APIdogRU/longpoll"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@apidog/vk-client": "git://github.com/APIdogRU/vk-client.git"
+  },
   "devDependencies": {
-    "@types/jest": "^24.0.23",
-    "@types/node": "^12.12.14",
-    "jest": "^24.9.0",
-    "ts-jest": "^24.2.0",
-    "typescript": "^3.7.2"
+    "@apidog/vk-typings": "git://github.com/APIdogRU/vk-typings.git",
+    "@types/jest": "24.0.23",
+    "@types/node": "12.12.14",
+    "jest": "24.9.0",
+    "ts-jest": "24.2.0",
+    "typescript": "3.7.2"
   }
 }

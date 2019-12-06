@@ -6,9 +6,9 @@ import {
     IVKLongPollUpdateUserTypingInChat,
     IVKLongPollUpdateNewDialogsCount,
     IVKLongPollUpdateFlagSet,
-    IVKLongPollUpdateFlagReset
-} from '../typings/longpoll';
-import { IVKMessage } from '../typings';
+    IVKLongPollUpdateFlagReset,
+    IVKMessage
+} from '@apidog/vk-typings';
 
 export type ILongPollConverter<T> = (update: IVKLongPollUpdate) => Promise<T>;
 

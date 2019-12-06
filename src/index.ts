@@ -1,9 +1,11 @@
 import request from './request';
-import { IVKApiGetLongPollRequest } from './typings/vkapi';
-import { IVKLongPollResult, IVKLongPollUpdate } from './typings/longpoll';
+import {
+    IVKApiGetLongPollRequest,
+    IVKLongPollResult,
+    IVKLongPollUpdate
+} from '@apidog/vk-typings';
 import converters from './utils/converter';
-import { IVKMessage } from './typings';
-import { apiClient, ApiClient } from './utils/apiRequests';
+import VKAPIClient from '@apidog/vk-client';
 
 export interface ILongPollProps {
     token: string;
@@ -32,7 +34,7 @@ export class LongPoll {
     private isActive: boolean = false;
     private server: ILongPollServer;
     private listener: Partial<Record<TLongPollEventType, ILongPollEventListener[]>> = {};
-    private requester: ApiClient;
+    private requester: VKAPIClient;
 
     private static readonly eventId2ListenerKey: Record<number, TLongPollEventType[]> = {
         4: ['message', 'messageRaw'],
@@ -45,14 +47,14 @@ export class LongPoll {
         if (!token) {
             throw new Error('token is not specified');
         }
-        this.requester = apiClient(token);
+        this.requester = VKAPIClient.getInstance(token);
     }
 
     fetchServer = async() => {
         if (this.server) {
             throw new Error('Server already fetched');
         }
-        const server = await this.requester<IVKApiGetLongPollRequest>('messages.getLongPollServer');
+        const server = await this.requester.perform<IVKApiGetLongPollRequest>('messages.getLongPollServer');
         this.setServer(server);
     };
 
@@ -109,15 +111,4 @@ const getLongPoll = async(props: ILongPollProps): Promise<LongPoll> => {
     return lp;
 };
 
-//export default start;
-
-getLongPoll({
-    token: process.env.token,
-    mode: 202
-}).then(longpoll => {
-    console.log('get long')
-    longpoll.on('message', (event: ILongPollEvent<IVKMessage>) => {
-        console.log(event);
-    });
-    longpoll.start();
-});
+export default getLongPoll;
