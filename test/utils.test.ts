@@ -1,5 +1,5 @@
 import {} from 'jest';
-import { getTypeByPeer, DialogType } from '../utils';
+import { getTypeByPeer, DialogType } from '../src/utils';
 
 describe('Utils', () => {
     it('Peers returns correct values', () => {

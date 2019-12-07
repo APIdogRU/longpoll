@@ -1,11 +1,14 @@
-import https from 'https';
+import { request as req } from 'https';
+import { ClientRequest } from 'http';
 
-export default async<T>(url: string, params: Record<string, string> = {}) => new Promise<T>((resolve, reject) => {
-    https.get(url, res => {
+export type FHandlerRequest = (request: ClientRequest) => any;
+
+export const request = async<T>(url: string, handler?: FHandlerRequest) => new Promise<T>((resolve, reject) => {
+    const request = req(url, res => {
         let data = '';
 
         res.on('data', chunk => data += chunk);
-      
+
         res.on('end', () => {
             try {
                 resolve(JSON.parse(data));
@@ -16,4 +19,6 @@ export default async<T>(url: string, params: Record<string, string> = {}) => new
     }).on('error', e => {
         reject(e);
     });
+
+    handler && handler(request);
 });

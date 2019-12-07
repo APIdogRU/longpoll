@@ -5,9 +5,11 @@
 		"target": "es5",
 		"noImplicitAny": true,
 		"moduleResolution": "node",
+		"declaration": true,
+		"declarationDir": "dist",
+		"outDir": "dist",
 		"sourceMap": false,
-		"outDir": "build",
-		"baseUrl": "."
+		"baseUrl": "src"
 	},
 	"include": [
 		"src/**/*"
